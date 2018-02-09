@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ContactListing.ContactsPage"
+             Title="Contacts"
+             NavigationPage.HasBackButton="False">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="addContactToolbarItem" Icon="plus.png" Text="Add" Activated="AddContactToolbarItem_Activated" />
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <ListView x:Name="contactListView" HasUnevenRows="True" ItemSelected="ContactListView_ItemSelected"
+                      AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                      AbsoluteLayout.LayoutFlags="All">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ImageCell ImageSource="{Binding ImageURL}" Text="{Binding Name}" Detail="{Binding Number}">
+                            <ImageCell.ContextActions>
+                                <MenuItem x:Name="deleteContactMenuItem" CommandParameter="{Binding .}" Text="Delete"
+                                          Clicked="DeleteContactMenuItem_Clicked" />
+                            </ImageCell.ContextActions>
+                        </ImageCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <Label x:Name="noContactsLabel" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="False"
+                   Text="Tap '+' to add a new contact"
+                   AbsoluteLayout.LayoutBounds="0.5, 0.5, 1, 1"
+                   AbsoluteLayout.LayoutFlags="All" />
+
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

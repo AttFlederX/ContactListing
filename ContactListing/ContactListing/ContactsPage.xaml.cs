@@ -51,14 +51,22 @@ namespace ContactListing
             UpdateContactList();
         }
 
-        private void ContactListView_ItemSelected(object sender, EventArgs e)
+        private async void ContactListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            #warning TODO
+            if (e.SelectedItem == null) // prevents recursion
+            {
+                return;
+            }
+
+            var contact = e.SelectedItem as Contact;
+            await Navigation.PushAsync(new ContactDetailsPage(null));
+            contactListView.SelectedItem = null; // deselects the item
         }
 
         // disable the hardware return button so that the user cannot return to the login screen
         protected override bool OnBackButtonPressed()
         {
+            Environment.Exit(0);
             return true;
         }
     }

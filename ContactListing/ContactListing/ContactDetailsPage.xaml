@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ContactListing.ContactDetailsPage"
+             Title="Contact information">
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <!--best i could do-->
+            <Image Source="http://placehold.it/1920x1080" Aspect="AspectFit"
+                   AbsoluteLayout.LayoutBounds="0, 0, 1, 0.42"
+                   AbsoluteLayout.LayoutFlags="All" />
+
+            <StackLayout AbsoluteLayout.LayoutBounds="0, 0.6, 1, 0.3"
+                         AbsoluteLayout.LayoutFlags="All"
+                         Padding="20"
+                         Spacing="15">
+
+                <Label VerticalOptions="Center" FontSize="32" FontAttributes="Bold" Text="{Binding Name}" />
+                <Label VerticalOptions="Center" TextColor="#606060" FontSize="18" Margin="0, 10, 0, 0" Text="Phone number: " />
+                <Label VerticalOptions="Center" TextColor="#909090" FontSize="16" Text="{Binding Number}" />
+            </StackLayout>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

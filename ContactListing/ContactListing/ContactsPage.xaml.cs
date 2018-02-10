@@ -59,7 +59,7 @@ namespace ContactListing
             }
 
             var contact = e.SelectedItem as Contact;
-            await Navigation.PushAsync(new ContactDetailsPage(null));
+            await Navigation.PushAsync(new ContactDetailsPage(contact));
             contactListView.SelectedItem = null; // deselects the item
         }
 

@@ -14,7 +14,7 @@
                 <Label TextColor="White" Text="Registration" FontSize="30" FontAttributes="Bold" />
                 <Label TextColor="White" Margin="0, 20, 0, 10" FontSize="18" Text="Enter your credentials: " />
 
-                <Entry x:Name="emailEntry" TextColor="White" PlaceholderColor="#C0C0C0" Placeholder="Email" />
+                <Entry x:Name="emailEntry" TextColor="White" PlaceholderColor="#C0C0C0" Placeholder="Email" Keyboard="Email" />
                 <Entry x:Name="passwordEntry" TextColor="White" PlaceholderColor="#C0C0C0" IsPassword="True" Placeholder="Password" />
                 <Entry x:Name="repeatPasswordEntry" TextColor="White" PlaceholderColor="#C0C0C0" IsPassword="True" Placeholder="Repeat password" />
             </StackLayout>

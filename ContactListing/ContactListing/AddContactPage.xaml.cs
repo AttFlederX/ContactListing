@@ -15,19 +15,20 @@ namespace ContactListing
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class AddContactPage : ContentPage
 	{
-        private User currentUser;
+        // private User currentUser;
+        public event EventHandler<Contact> ContactAdded;
 
-		public AddContactPage(User user)
+		public AddContactPage()
 		{
-            currentUser = user;
+            // currentUser = user;
 			InitializeComponent();
 		}
 
         private async void AddContactButton_Clicked(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(nameEntry.Text))
+            if (string.IsNullOrWhiteSpace(firstNameEntry.Text))
             {
-                DisplayAlert("Error", "Please fill in the name field", "OK");
+                DisplayAlert("Error", "Please fill in the first name field", "OK");
             }
             else if (string.IsNullOrWhiteSpace(countryCodeEntry.Text))
             {
@@ -37,12 +38,16 @@ namespace ContactListing
             {
                 DisplayAlert("Error", "Phone number must be at least 8 digits long", "OK");
             }
+            else if (!ValidationService.IsEmailValid(emailEntryCell.Text))
+            {
+                DisplayAlert("Error", "Please enter a valid email address", "OK");
+            }
             else
             {
-                var newContact = new Contact(nameEntry.Text, countryCodeEntry.Text, numberEntry.Text);
-                currentUser.ContactList.Add(newContact);
-
-                await Navigation.PopAsync();
+                var newContact = new Contact(firstNameEntry.Text, lastNameEntry.Text, countryCodeEntry.Text, numberEntry.Text, emailEntryCell.Text, 
+                    importantSwitchCell.On);
+                // currentUser.ContactList.Add(newContact);
+                ContactAdded(this, newContact);
             }
         }
 

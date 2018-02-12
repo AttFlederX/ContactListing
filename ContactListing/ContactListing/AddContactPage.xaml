@@ -4,28 +4,35 @@
              x:Class="ContactListing.AddContactPage"
              Title="Add contact">
     <ContentPage.Content>
-        <AbsoluteLayout>
-            <StackLayout AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
-                         AbsoluteLayout.LayoutFlags="All"
-                         Padding="25"
-                         Spacing="10">
+        <TableView Intent="Form">
+            <TableRoot>
+                <TableSection Title="Contact name">
+                    <EntryCell x:Name="firstNameEntry" Placeholder="First name" />
+                    <EntryCell x:Name="lastNameEntry" Placeholder="Last name" />
+                </TableSection>
 
-                <Label Margin="0, 10, 0, 10" FontSize="18" Text="Enter the contact information: " />
+                <TableSection Title="Contact information">
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" Spacing="5" Padding="17, 0">
+                            <Label VerticalOptions="Center" Text="+" />
+                            <Entry x:Name="countryCodeEntry" WidthRequest="50" Keyboard="Telephone" />
+                            <Entry x:Name="numberEntry" Placeholder="Phone number" HorizontalOptions="FillAndExpand" Keyboard="Telephone" />
+                        </StackLayout>
+                    </ViewCell>
+                    <EntryCell x:Name="emailEntryCell" Placeholder="Email" Keyboard="Email" />
+                </TableSection>
 
-                <Entry x:Name="nameEntry" Placeholder="Name" />
+                <TableSection Title="Misc">
+                    <SwitchCell x:Name="importantSwitchCell" Text="Important" On="False" />
+                </TableSection>
 
-                <StackLayout Orientation="Horizontal" Spacing="5">
-                    <Label VerticalOptions="Center" Text="+" />
-                    <Entry x:Name="countryCodeEntry" WidthRequest="50" />
-                    <Entry x:Name="numberEntry" Placeholder="Phone number" HorizontalOptions="FillAndExpand" />
-                </StackLayout>
-            </StackLayout>
-
-            <StackLayout AbsoluteLayout.LayoutBounds="0, 1, 1, 0.15"
-                         AbsoluteLayout.LayoutFlags="All"
-                         Padding="25">
-                <Button x:Name="addContactButton" HorizontalOptions="Fill" Text="Add contact" Clicked="AddContactButton_Clicked" />
-            </StackLayout>
-        </AbsoluteLayout>
+                <TableSection>
+                    <ViewCell>
+                        <Button x:Name="addContactButton" HorizontalOptions="Fill" Margin="20, 0" Text="Add contact" 
+                                Clicked="AddContactButton_Clicked" />
+                    </ViewCell>
+                </TableSection>
+            </TableRoot>
+        </TableView>
     </ContentPage.Content>
 </ContentPage>

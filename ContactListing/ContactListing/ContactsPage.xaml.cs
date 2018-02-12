@@ -40,7 +40,15 @@ namespace ContactListing
 
         private async void AddContactToolbarItem_Activated(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new AddContactPage(currentUser));
+            var addContactPage = new AddContactPage();
+            // external event subscription
+            addContactPage.ContactAdded += async (source, args) =>
+            {
+                currentUser.ContactList.Add(args);
+                await Navigation.PopAsync();
+            };
+
+            await Navigation.PushAsync(addContactPage);
             UpdateContactList();
         }
 

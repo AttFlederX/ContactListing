@@ -19,6 +19,6 @@ namespace ContactListing
 		{
             BindingContext = contact ?? throw new ArgumentNullException();
 			InitializeComponent();
-		}
+        }
 	}
 }

@@ -18,7 +18,7 @@
                          AbsoluteLayout.LayoutFlags="All"
                          Padding="25"
                          Spacing="10">
-                <Entry x:Name="emailEntry" TextColor="White" PlaceholderColor="#C0C0C0" Placeholder="Email" Text="a@a.a" />
+                <Entry x:Name="emailEntry" TextColor="White" PlaceholderColor="#C0C0C0" Placeholder="Email" Text="a@a.a" Keyboard="Email" />
                 <Entry x:Name="passwordEntry" TextColor="White" PlaceholderColor="#C0C0C0" IsPassword="True" Placeholder="Password" Text="11111111" />
 
                 <Button x:Name="loginButton" BackgroundColor="#1DABF0" TextColor="White"
